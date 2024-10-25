@@ -11,6 +11,7 @@ companies = {"google": "GOOGL", "dell": "DELL", "apple": "AAPL"}
 for company, ticker in companies.items():
     data = yf.download(ticker, start= start_date, end= end_date)
     selected_columns = data[['High', 'Low', 'Open', 'Close']]
+    
     selected_columns = selected_columns.dropna()
 
     metrics = {
