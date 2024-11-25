@@ -31,7 +31,7 @@ def calc_mape(predicted_data, true_data):
     return np.divide(np.sum(np.divide(np.absolute(predicted_data - true_data), true_data), 0), true_data.shape[0])
 
 for company, stock in STOCKS.items():
-    dataset = np.genfromtxt(stock, delimiter = ',', skip_header = 1)
+    dataset = np.genfromtxt(stock, delimiter = ',', skip_header = 2)
     predicted_stock_data = np.empty([0,dataset.shape[1]])
     aic_vect = np.empty([0,1])
     bic_vect = np.empty([0,1])
@@ -122,14 +122,19 @@ for company, stock in STOCKS.items():
 
     mape = calc_mape(predicted_stock_data, np.flipud(dataset[range(100),:]))
 
+    PLOT_DIR_2 = 'results'
+
+    if not os.path.exists(PLOT_DIR_2):
+        os.makedirs(PLOT_DIR_2, exist_ok=True) 
+
     print('MAPE for the {} stock is '.format(company),mape)
     np.savetxt(f'results/{company}_results.csv', mape)
 
 
-    PLOT_DIR_2 = 'plots/prediction'
+    PLOT_DIR_3 = 'plots/prediction'
 
-    if not os.path.exists(PLOT_DIR_2):
-        os.makedirs(PLOT_DIR_2, exist_ok=True) 
+    if not os.path.exists(PLOT_DIR_3):
+        os.makedirs(PLOT_DIR_3, exist_ok=True) 
 
     LABELS = ['High', 'Low', 'Open', 'Close']
 
