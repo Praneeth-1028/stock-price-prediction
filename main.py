@@ -150,7 +150,7 @@ for company, stock in STOCKS.items():
         plt.legend(loc='upper left')
         
         # Save the plot
-        plt.savefig(os.path.join(PLOT_DIR_2, f'{label}_price_{company}.png'))
+        plt.savefig(os.path.join(PLOT_DIR_3, f'{label}_price_{company}.png'))
         plt.close()
         
 
