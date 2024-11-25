@@ -1,3 +1,4 @@
 # stock-price-prediction
-Run the main.py file.<br>
+run the main.py file.<br>
+<br>
 data.py file has data fetching code.
