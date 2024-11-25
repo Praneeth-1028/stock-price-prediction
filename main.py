@@ -61,7 +61,7 @@ for company, stock in STOCKS.items():
     if not os.path.exists(PLOT_DIR_1):
         os.makedirs(PLOT_DIR_1, exist_ok=True) 
 
-    plt.figure()
+    plt.figure(figsize=(7, 4))
     
     plt.plot(possible_states, aic_vect, label='AIC values', color='blue', linestyle='-') 
     plt.plot(possible_states, bic_vect, label='BIC values', color='red', linestyle='--')
@@ -77,7 +77,7 @@ for company, stock in STOCKS.items():
     plt.close()
 
     opt_states = np.argmin(bic_vect) + 2
-    print('Optimum number of states are {}'.format(opt_states))
+    print('Optimum number of states for {} stock are {}'.format(company, opt_states))
 
 
 
@@ -140,7 +140,7 @@ for company, stock in STOCKS.items():
 
     # Plot predicted vs actual stock prices
     for i, label in enumerate(LABELS):
-        plt.figure()
+        plt.figure(figsize=(7, 4))
         plt.plot(range(100), predicted_stock_data[:, i], 'k-', label=f'Predicted {label} price')
         plt.plot(range(100), np.flipud(dataset[range(100), i]), 'r--', label=f'Actual {label} price')
         plt.xlabel('Time steps')
